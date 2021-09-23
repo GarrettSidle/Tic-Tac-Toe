@@ -1,0 +1,301 @@
+import turtle
+def board():
+    LineDistance=600
+
+    turtle.pu()
+    turtle.goto(-200,320)
+    turtle.pd()
+    turtle.write("Feckin Tic-Tac-Toe",font=('Freestyle Script',60,'normal'))
+
+    turtle.pu()                                           #Horizontal Lines
+    turtle.goto(-300,-100)
+    turtle.pd()
+    turtle.forward(LineDistance)
+    turtle.pu()
+    turtle.goto(-300,100)
+    turtle.pd()
+    turtle.forward(LineDistance)
+    turtle.pu()
+
+    turtle.rt(90)                                         #Vertical Lines
+    turtle.goto(-100,300)
+    turtle.pd()
+    turtle.forward(LineDistance)
+    turtle.pu()
+    turtle.goto(100,300)
+    turtle.pd()
+    turtle.forward(LineDistance)
+
+    turtle.left(90)
+
+def Scratch():
+    Width=25
+    for x in range(10): 
+        Width=Width+100
+
+        turtle.width(Width)
+        turtle.speed(50)
+        turtle.pu()
+        turtle.goto(272,289)
+        turtle.rt(52)
+        turtle.pd()
+        turtle.forward(100)
+        turtle.rt(160)
+        turtle.forward(160)
+        turtle.lt(160)
+        turtle.forward(250)
+        turtle.rt(160)
+        turtle.forward(300)
+        turtle.lt(160)
+        turtle.forward(349)
+        turtle.rt(160)
+        turtle.forward(531)
+        turtle.lt(160)
+        turtle.forward(680)
+        turtle.rt(160)
+        turtle.forward(668)
+        turtle.lt(160)
+        turtle.forward(531)
+        turtle.rt(160)
+        turtle.forward(300)
+
+def XShape(XCord,YCord):
+    XShapeEdge=50
+
+    turtle.pu()                                             #left to right line
+    turtle.goto(XCord-XShapeEdge,YCord+XShapeEdge)
+    turtle.rt(45)
+    turtle.pd()
+    turtle.forward(140)
+    
+    turtle.pu()                                             #right to left line
+    turtle.goto(XCord+XShapeEdge,YCord+XShapeEdge)
+    turtle.rt(90)
+    turtle.pd()
+    turtle.forward(140)
+
+    turtle.left(135)                                         #Reset Turtle Pos                    
+
+def CircleShape(XCord,YCord):
+    Rad= 50
+    turtle.pu()
+    turtle.goto(XCord,YCord-Rad)
+    turtle.pd()
+    turtle.circle(Rad)
+    
+def P1Input(Position):
+    print("7|8|9")
+    print("-+-+-")
+    print("4|5|6")
+    print("-+-+-")
+    print("1|2|3")
+    print()
+    P1Input=input("What postion on your grid do you want to put your X on")
+    P1Cords = [0,0]
+    try:
+        P1Cords = Position[P1Input]
+        Position.pop(P1Input)
+    except:
+        print("Input has already been used, or is invalid")
+        quit()
+    return[P1Cords[0],P1Cords[1],P1Input]
+
+def P2Input(Position):
+    print("7|8|9")
+    print("-+-+-")
+    print("4|5|6")
+    print("-+-+-")
+    print("1|2|3")
+    print()
+    P2Input=input("What postion on your grid do you want to put your O on")
+    P2Cords = [0,0]
+    try:
+        P2Cords = Position[P2Input]
+        Position.pop(P2Input)
+    except:
+        print("Input has already been used, or is invalid")
+        quit()
+    return[P2Cords[0],P2Cords[1],P2Input] 
+
+def P1WinCond(Input,InputList):
+    InputList.append(Input)
+    if '1' in InputList and '2' in InputList and '3' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.goto(-300,-200)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '4' in InputList and '5' in InputList and '6' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.goto(-300,0)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '7' in InputList and '8' in InputList and '9' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.goto(-300,200)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '1' in InputList and '4' in InputList and '7' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(-200,300)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '2' in InputList and '5' in InputList and '8' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(0,300)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '3' in InputList and '6' in InputList and '9' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(200,300)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '1' in InputList and '5' in InputList and '9' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.rt(135)
+        turtle.goto(300,300)
+        turtle.pd()
+        turtle.forward(850)
+        quit()
+    elif '7' in InputList and '5' in InputList and '3' in InputList:
+        print("Player 1 has won the game")
+        turtle.pu()
+        turtle.rt(45)
+        turtle.goto(-300,300)
+        turtle.pd()
+        turtle.forward(850)
+        quit()
+    return(InputList)
+
+def P2WinCond(Input,InputList):
+    InputList.append(Input)
+    if '1' in InputList and '2' in InputList and '3' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.goto(-300,-200)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '4' in InputList and '5' in InputList and '6' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.goto(-300,0)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '7' in InputList and '8' in InputList and '9' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.goto(-300,200)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '1' in InputList and '4' in InputList and '7' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(-200,300)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '2' in InputList and '5' in InputList and '8' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(0,300)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '3' in InputList and '6' in InputList and '9' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.rt(90)
+        turtle.goto(200,300)
+        turtle.pd()
+        turtle.forward(600)
+        quit()
+    elif '1' in InputList and '5' in InputList and '9' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.rt(135)
+        turtle.goto(300,300)
+        turtle.pd()
+        turtle.forward(850)
+        quit()
+    elif '7' in InputList and '5' in InputList and '3' in InputList:
+        print("Player 2 has won the game")
+        turtle.pu()
+        turtle.rt(45)
+        turtle.goto(-300,300)
+        turtle.pd()
+        turtle.forward(850)
+        quit()
+    return(InputList)
+   
+def ScratchTimer(CD):
+    CD=CD-1
+    return(CD)
+
+def Main():
+
+    turtle.clear()
+    turtle.showturtle()
+    turtle.screensize(100,100,'Navy')
+
+    P1InputList=[]
+    P2InputList=[]
+
+    CountDown = 9
+
+    Position = {'1':[-200,-200],'2':[0,-200],'3':[200,-200],'4':[-200,0],
+                '5':[0,0],'6':[200,0],'7':[-200,200],'8':[0,200],'9':[200,200]}
+
+    turtle.speed(0)
+    turtle.color('teal')
+    turtle.isvisible()
+    turtle.width(40)
+    board()
+    while CountDown >= 1:
+
+        P1Inputs=P1Input(Position)
+
+        XShape(P1Inputs[0],P1Inputs[1])
+
+        P1InputList = P1WinCond(P1Inputs[2],P1InputList)
+
+        CountDown=ScratchTimer(CountDown)
+
+        if bool(Position)==False:
+            print()
+            print("SCRATCH!!!!")
+            print()
+            Scratch()
+            Restart=input('Do you want to try again? "Yes" or "No"')                #Reset is currently not functioning
+            if Restart == 'YES' or 'Y'or 'yes' or 'y':
+                Main()
+            else:
+                quit()
+        
+        P2Inputs=P2Input(Position)
+
+        CircleShape(P2Inputs[0],P2Inputs[1])
+
+        P2InputList = P2WinCond(P2Inputs[2],P2InputList)
+
+        CountDown=ScratchTimer(CountDown)
+Main()
